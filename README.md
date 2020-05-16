@@ -12,6 +12,9 @@ Web application for ordering pizza for clients, which contains a shopping cart.
 ## Demo
 [Here](https://pizza-ecommerce.herokuapp.com/)
 
+## Backend Repository
+[Here](https://github.com/florovarelaa/Pizza-Ecommerce-BE)
+
 ## Features
 * Add and remove items to a Cart
 * Remove items
