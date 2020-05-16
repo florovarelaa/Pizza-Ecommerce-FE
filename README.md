@@ -10,7 +10,7 @@ Web application for ordering pizza for clients, which contains a shopping cart.
  The pizza order process covers ordering single or several pizzas with definition of the quantity and calculation of a total price in Euros and US$ also adding delivery costs to the bill.
 
 ## Demo
-[Here]()
+[Here](https://pizza-ecommerce.herokuapp.com/)
 
 ## Features
 * Add and remove items to a Cart
