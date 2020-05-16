@@ -21,7 +21,7 @@ const initState = {
     loading: false,
     sending: false,
     items: [],
-    apiUrl: 'http://localhost:3000/'
+    apiUrl: 'https://calm-eyrie-20363.herokuapp.com'
 }
 
 const SHIPPING = 0.1;
