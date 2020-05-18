@@ -28,7 +28,7 @@ class Home extends Component {
                     <div className="card-content">
                         <p>{item.desc}</p>
                         <p><b>Price: {this.props.currencyIsDollar === true ? 
-                            `${(item.price)}$` : `${(item.price * 0.92).toFixed(2)}€`}</b></p>
+                            `US$ ${(item.price)}` : `€ ${(item.price * 0.92).toFixed(2)}`}</b></p>
                     </div>
                 </div>
             )

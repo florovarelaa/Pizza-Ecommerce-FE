@@ -24,7 +24,6 @@ class Cart extends Component{
                 this.props.items.map(item=>{
                     return(
                         <li className="collection-item avatar" key={item.id}>
-                           <div className="card">
                                     <div className="item-img"> 
                                         <img src={item.img} alt={item.img} className=""/>
                                     </div>
@@ -39,13 +38,13 @@ class Cart extends Component{
                                                 <p>
                                                     <b>Quantity: {item.quantity}</b>
                                                     <b> - </b>
-                                                    <b>Total: {item.quantity * item.price} U$D</b>
+                                                    <b>Total: US$ {item.quantity * item.price}</b>
                                                 </p>
                                             </div>
                                             )
                                         : (
                                             <div>
-                                                <p><b>Price: {(item.price * 0.92).toFixed(2)}€</b></p>
+                                                <p><b>Price: € {(item.price * 0.92).toFixed(2)}</b></p>
                                                 <p>
                                                     <b>Quantity: {item.quantity}</b>
                                                     <b> - </b>
@@ -60,7 +59,6 @@ class Cart extends Component{
                                         </div>
                                         <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
                                     </div>
-                                    </div>            
                                 </li>
                          
                     )

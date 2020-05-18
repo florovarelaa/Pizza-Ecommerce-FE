@@ -10,13 +10,13 @@ const YourOrder = props => {
                         <ul>
                             {props.addedItems.map(e => {
                                 return(<li key={e.id}>
-                                    <p>{e.title} ({e.price} U$D) x {e.quantity} = {e.price * e.quantity} U$D</p>
+                                    <p>{e.title} (US$ {e.price}) x {e.quantity} = US$ {e.price * e.quantity}</p>
                                 </li>)
                             })}
-                            {props.finalPrice !== 0 ? <li>Shipping(+{(Math.round(props.finalPrice * 100) / 100).toFixed(2)} U$D)</li> : ''}
+                            {props.finalPrice !== 0 ? <li>Shipping(+US$ {(Math.round(props.finalPrice * 100) / 100).toFixed(2)})</li> : ''}
                         </ul>
                     </li>
-                    <li className="collection-item"><b>Total: {props.total + props.finalPrice} U$D</b></li>
+                    <li className="collection-item"><b>Total: US$ {props.total + props.finalPrice}</b></li>
             </div>
         ) : (
             <div>
@@ -24,13 +24,13 @@ const YourOrder = props => {
                         <ul>
                             {props.addedItems.map(e => {
                                 return(<li key={e.id}>
-                                    <p>{e.title} ({(e.price * 0.92).toFixed(2)} €) x {e.quantity} = {(e.price * e.quantity * 0.92).toFixed(2)} €</p>
+                                    <p>{e.title} (€ {(e.price * 0.92).toFixed(2)}) x {e.quantity} = € {(e.price * e.quantity * 0.92).toFixed(2)}</p>
                                 </li>)
                             })}
-                            {props.finalPrice !== 0 ? <li>Shipping(+{(Math.round(props.finalPrice * 100) / 100 * 0.92).toFixed(2)} €)</li> : ''}
+                            {props.finalPrice !== 0 ? <li>Shipping(+€ {(Math.round(props.finalPrice * 100) / 100 * 0.92).toFixed(2)})</li> : ''}
                         </ul>
                     </li>
-                    <li className="collection-item"><b>Total: {((props.total + props.finalPrice * 0.92)).toFixed(2)} €</b></li>
+                    <li className="collection-item"><b>Total: €{((props.total + props.finalPrice * 0.92)).toFixed(2)}</b></li>
             </div>
         )
     )

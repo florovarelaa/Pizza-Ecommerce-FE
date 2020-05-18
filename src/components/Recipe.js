@@ -36,9 +36,9 @@ class Recipe extends Component {
                         <label>
                             {
                                 this.props.currencyIsDollar ? (
-                                    <span>Shipping (+{(Math.round(this.props.finalPrice * 100) / 100).toFixed(2)} U$D)</span>
+                                    <span>Shipping (+US$ {(Math.round(this.props.finalPrice * 100) / 100).toFixed(2)})</span>
                                 ) : (
-                                    <span>Shipping (+{(Math.round(this.props.finalPrice * 100 * 0.92) / 100).toFixed(2)} €)</span>
+                                    <span>Shipping (+€ {(Math.round(this.props.finalPrice * 100 * 0.92) / 100).toFixed(2)})</span>
                                 )
                             }
                         </label>

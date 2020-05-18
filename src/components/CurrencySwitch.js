@@ -12,7 +12,7 @@ class CurrencySwitch extends Component {
         return (
             <div className="switch">
                 <label>
-                        U$D
+                        US$
                     <input type="checkbox" checked={!this.props.currencyIsDollar} onChange={this.handleChange} />
                     <span className="lever"></span>
                         €
