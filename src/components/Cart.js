@@ -34,7 +34,9 @@ class Cart extends Component{
                                         <p>{item.desc}</p>
                                         <p><b>Price: {item.price}$</b></p> 
                                         <p>
-                                            <b>Quantity: {item.quantity}</b> 
+                                            <b>Quantity: {item.quantity}</b>
+                                            <b> - </b>
+                                            <b>Total: {item.quantity * item.price}</b>
                                         </p>
                                         <div className="add-remove">
                                             <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleAddQuantity(item.id)}}>arrow_drop_up</i></Link>

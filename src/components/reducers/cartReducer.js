@@ -101,7 +101,8 @@ const cartReducer= (state = initState, action) => {
                 return{
                     ...state,
                     total: newTotal,
-                    finalPrice: newTotal * SHIPPING
+                    finalPrice: newTotal * SHIPPING,
+                    addedItems:[...state.addedItems],
                     }
             }
             else{

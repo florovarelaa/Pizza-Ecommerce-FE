@@ -37,6 +37,16 @@ class Recipe extends Component {
                             <span>(+{(Math.round(this.props.finalPrice * 100 * 0.92) / 100).toFixed(2)} Euros)</span>
                         </label>
                     </li>
+                    <li className="collection-item"><b>Your Order</b>
+                        <ul>
+                            {this.props.addedItems.map(e => {
+                                return(<li>
+                                    <p>{e.title} ({e.price}$) x {e.quantity} = {e.price * e.quantity}$</p>
+                                </li>)
+                            })}
+                            {this.props.finalPrice !== 0 ? <li>Shipping(+{(Math.round(this.props.finalPrice * 100) / 100).toFixed(2)} US$)</li> : ''}
+                        </ul>
+                    </li>
                     <li className="collection-item"><b>Total: {this.props.total + this.props.finalPrice} US$</b></li>
                     <li className="collection-item"><b>Total: {((this.props.total + this.props.finalPrice * 0.92)).toFixed(2)} Euros</b></li>
                 </div>
