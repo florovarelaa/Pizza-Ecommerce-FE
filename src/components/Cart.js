@@ -32,12 +32,28 @@ class Cart extends Component{
                                     <div className="item-desc">
                                         <span className="title">{item.title}</span>
                                         <p>{item.desc}</p>
-                                        <p><b>Price: {item.price}$</b></p> 
-                                        <p>
-                                            <b>Quantity: {item.quantity}</b>
-                                            <b> - </b>
-                                            <b>Total: {item.quantity * item.price}</b>
-                                        </p>
+
+                                        {this.props.currencyIsDollar === true ? 
+                                            (<div>
+                                                <p><b>Price: {item.price}$</b></p>
+                                                <p>
+                                                    <b>Quantity: {item.quantity}</b>
+                                                    <b> - </b>
+                                                    <b>Total: {item.quantity * item.price} U$D</b>
+                                                </p>
+                                            </div>
+                                            )
+                                        : (
+                                            <div>
+                                                <p><b>Price: {(item.price * 0.92).toFixed(2)}€</b></p>
+                                                <p>
+                                                    <b>Quantity: {item.quantity}</b>
+                                                    <b> - </b>
+                                                    <b>Total: {(item.quantity * item.price * 0.92).toFixed(2)} €</b>
+                                                </p>
+                                            </div>
+
+                                        )}
                                         <div className="add-remove">
                                             <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleAddQuantity(item.id)}}>arrow_drop_up</i></Link>
                                             <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id)}}>arrow_drop_down</i></Link>
@@ -72,6 +88,7 @@ class Cart extends Component{
 const mapStateToProps = (state)=>{
     return{
         items: state.addedItems,
+        currencyIsDollar: state.currencyIsDollar
     }
 }
 const mapDispatchToProps = (dispatch)=>{

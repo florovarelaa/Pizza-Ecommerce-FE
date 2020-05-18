@@ -10,7 +10,8 @@ import {
     SEND_DATA_SUCCESS,
     SEND_DATA_ERROR,
     HANDLE_ADDRESS_CHANGE,
-    HANDLE_EMAIL_CHANGE 
+    HANDLE_EMAIL_CHANGE,
+    SWITCH_CURRENCY
     } from '../actions/action-types/cart-actions'
 
 
@@ -21,7 +22,8 @@ const initState = {
     loading: false,
     sending: false,
     items: [],
-    apiUrl: 'https://calm-eyrie-20363.herokuapp.com/'
+    apiUrl: 'https://calm-eyrie-20363.herokuapp.com/',
+    currencyIsDollar: true
 }
 
 const SHIPPING = 0.1;
@@ -183,6 +185,14 @@ const cartReducer= (state = initState, action) => {
                 address: action.value,
                 validAddress: validAddress,
                 error: validAddress && state.validEmail && state.addedItems.length > 0
+            }
+        }
+
+        case SWITCH_CURRENCY: {
+            let currencyIsDollar = !state.currencyIsDollar;
+            return {
+                ...state,
+                currencyIsDollar: currencyIsDollar
             }
         }
 

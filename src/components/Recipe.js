@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleAddressChange, handleEmailChange, handleSendOrder} from './actions/cartActions';
 import Spinner from './Spinner';
 import Success from './Success';
+import YourOrder from './YourOrder';
 
 class Recipe extends Component {
 
@@ -33,22 +34,16 @@ class Recipe extends Component {
                 <div className="collection">
                     <li className="collection-item">
                         <label>
-                            <span>Shipping(+{(Math.round(this.props.finalPrice * 100) / 100).toFixed(2)} US$)</span>
-                            <span>(+{(Math.round(this.props.finalPrice * 100 * 0.92) / 100).toFixed(2)} Euros)</span>
+                            {
+                                this.props.currencyIsDollar ? (
+                                    <span>Shipping (+{(Math.round(this.props.finalPrice * 100) / 100).toFixed(2)} U$D)</span>
+                                ) : (
+                                    <span>Shipping (+{(Math.round(this.props.finalPrice * 100 * 0.92) / 100).toFixed(2)} €)</span>
+                                )
+                            }
                         </label>
                     </li>
-                    <li className="collection-item"><b>Your Order</b>
-                        <ul>
-                            {this.props.addedItems.map(e => {
-                                return(<li>
-                                    <p>{e.title} ({e.price}$) x {e.quantity} = {e.price * e.quantity}$</p>
-                                </li>)
-                            })}
-                            {this.props.finalPrice !== 0 ? <li>Shipping(+{(Math.round(this.props.finalPrice * 100) / 100).toFixed(2)} US$)</li> : ''}
-                        </ul>
-                    </li>
-                    <li className="collection-item"><b>Total: {this.props.total + this.props.finalPrice} US$</b></li>
-                    <li className="collection-item"><b>Total: {((this.props.total + this.props.finalPrice * 0.92)).toFixed(2)} Euros</b></li>
+                    <YourOrder />
                 </div>
                 <input 
                     // className={this.props.validEmail ? "collection-item" : "collection-item error"} 
@@ -97,7 +92,8 @@ const mapStateToProps = (state) => {
         loading: state.loading,
         apiUrl: state.apiUrl,
         success: state.success,
-        error: state.error
+        error: state.error,
+        currencyIsDollar: state.currencyIsDollar
     }
 }
 

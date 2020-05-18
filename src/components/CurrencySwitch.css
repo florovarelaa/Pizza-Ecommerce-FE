@@ -1,0 +1,7 @@
+.lever {
+    background-color: #ee6e73 !important; /*  Watch out when using !important */
+
+}
+.lever::after {
+    background-color: #F1F1F1 !important; /* Watch out when using !important */
+}

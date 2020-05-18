@@ -5,7 +5,7 @@ import './success.css'
 //https://codepen.io/solomonkitumba/pen/rNNYWxE
 //For making this spinner
 
-function Spinner() {
+function Success() {
     return (
         <div className="success-checkmark">
             <div className="check-icon">
@@ -18,4 +18,4 @@ function Spinner() {
     )
 }
 
-export default Spinner;
+export default Success;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addToCart, loadData } from './actions/cartActions'
 import pizza_not_found from '../images/404_pizza_not_found.jpg';
 import Spinner from './Spinner';
+import CurrencySwitch from './CurrencySwitch';
 
 class Home extends Component {
 
@@ -26,7 +27,8 @@ class Home extends Component {
 
                     <div className="card-content">
                         <p>{item.desc}</p>
-                        <p><b>Price: {item.price}$</b></p>
+                        <p><b>Price: {this.props.currencyIsDollar === true ? 
+                            `${(item.price)}$` : `${(item.price * 0.92).toFixed(2)}€`}</b></p>
                     </div>
                 </div>
             )
@@ -41,7 +43,7 @@ class Home extends Component {
         } else {
             return (
                 <div className="container">
-                    <h3 className="center">Our Products</h3>
+                    <CurrencySwitch />
                     <div className="box">
                         {itemList}
                     </div>
@@ -56,7 +58,8 @@ const mapStateToProps = (state)=>{
       items: state.items,
       products: state.products,
       loading: state.loading,
-      apiUrl: state.apiUrl
+      apiUrl: state.apiUrl,
+      currencyIsDollar: state.currencyIsDollar
     }
   }
 const mapDispatchToProps= (dispatch)=>{
