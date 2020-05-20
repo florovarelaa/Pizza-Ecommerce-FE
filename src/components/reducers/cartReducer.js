@@ -25,7 +25,6 @@ const initState = {
     items: [],
     apiUrl: 'https://calm-eyrie-20363.herokuapp.com/',
     currencyIsDollar: true,
-    error: false
 }
 
 const SHIPPING = 0.1;
