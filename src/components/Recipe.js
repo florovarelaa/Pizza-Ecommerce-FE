@@ -23,7 +23,6 @@ class Recipe extends Component {
     }
 
     handleClick = (e) => {
-        console.log('this.props.error', this.props.error)
         if (!this.props.error) {
             let data = {
                 products: this.props.addedItems,
