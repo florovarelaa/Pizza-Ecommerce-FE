@@ -11,6 +11,7 @@ import {
     SEND_DATA_ERROR,
     HANDLE_ADDRESS_CHANGE,
     HANDLE_EMAIL_CHANGE,
+    HANDLE_PHONE_CHANGE,
     SWITCH_CURRENCY
     } from '../actions/action-types/cart-actions'
 
@@ -23,13 +24,14 @@ const initState = {
     sending: false,
     items: [],
     apiUrl: 'https://calm-eyrie-20363.herokuapp.com/',
-    currencyIsDollar: true
+    currencyIsDollar: true,
+    error: false
 }
 
 const SHIPPING = 0.1;
 
 
-const cartReducer= (state = initState, action) => {
+const cartReducer = (state = initState, action) => {
     
     switch (action.type) {
 
@@ -173,7 +175,7 @@ const cartReducer= (state = initState, action) => {
                 ...state,
                 email: action.value,
                 validEmail: validEmail,
-                error: validEmail && state.validAddress && state.addedItems.length > 0
+                error: !(validEmail && state.validPhone && state.validAddress && state.validPhone && state.addedItems.length > 0)
             }
         }
         
@@ -184,8 +186,19 @@ const cartReducer= (state = initState, action) => {
                 ...state,
                 address: action.value,
                 validAddress: validAddress,
-                error: validAddress && state.validEmail && state.addedItems.length > 0
+                error: validAddress && state.validPhone && state.validEmail && state.addedItems.length > 0
             }
+        }
+
+        case HANDLE_PHONE_CHANGE: {
+            let regex = /[1-9]{6,}/;
+            let validPhone = regex.test(action.value);
+                return {
+                    ...state,
+                    phone: action.value,
+                    validPhone: validPhone,
+                    error: validPhone && state.validAddress && state.validEmail && state.addedItems.length > 0
+                }
         }
 
         case SWITCH_CURRENCY: {

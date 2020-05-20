@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleAddressChange, handleEmailChange, handleSendOrder} from './actions/cartActions';
+import { handleAddressChange, handleEmailChange, handlePhoneChange, handleSendOrder} from './actions/cartActions';
 import Spinner from './Spinner';
 import Success from './Success';
 import YourOrder from './YourOrder';
@@ -16,9 +16,14 @@ class Recipe extends Component {
         //A debouncer could be added so as not to call redux action on every change
         this.props.handleAddressChange(e.target.value);
     }
+   
+    handlePhoneChange = (e) => {
+        //A debouncer could be added so as not to call redux action on every change
+        this.props.handlePhoneChange(e.target.value);
+    }
 
     handleClick = (e) => {
-        if (this.props.finalPrice > 0 && this.props.validAddress && this.props.validEmail) {
+        if (this.props.validAddress && this.props.validPhone && this.props.validEmail) {
             let data = {
                 products: this.props.addedItems,
                 ship_address: this.props.address,
@@ -46,14 +51,18 @@ class Recipe extends Component {
                     <YourOrder />
                 </div>
                 <input 
-                    // className={this.props.validEmail ? "collection-item" : "collection-item error"} 
                     type="email" placeholder="Email"
                     name="email_input"
                     onChange={this.handleEmailChange}
                     value={this.props.email || ''}
                 />
+                <input 
+                    type="tel" placeholder="Phone - (123) 456-7890"
+                    name="phone_input"
+                    onChange={this.handlePhoneChange}
+                    value={this.props.phone || ''}
+                />
                 <input
-                    // className={this.props.validAddress ? "collection-item" : "collection-item error"}
                     type="text"
                     placeholder="Address - StreetName 1234"
                     name="address_input"
@@ -93,7 +102,9 @@ const mapStateToProps = (state) => {
         apiUrl: state.apiUrl,
         success: state.success,
         error: state.error,
-        currencyIsDollar: state.currencyIsDollar
+        currencyIsDollar: state.currencyIsDollar,
+        phone: state.phone,
+        validPhone: state.validPhone
     }
 }
 
@@ -103,6 +114,7 @@ const mapDispatchToProps = (dispatch) => {
         substractShipping: () => { dispatch({ type: 'SUB_SHIPPING' }) },
         handleEmailChange: (value) => {dispatch(handleEmailChange(value))},
         handleAddressChange: (value) => {dispatch(handleAddressChange(value))},
+        handlePhoneChange: (value) => {dispatch(handlePhoneChange(value))},
         handleSendOrder: (url, data) => {dispatch(handleSendOrder(url, data))}
     }
 }

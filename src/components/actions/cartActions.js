@@ -11,6 +11,7 @@ import {
     SEND_DATA_ERROR,
     HANDLE_ADDRESS_CHANGE,
     HANDLE_EMAIL_CHANGE,
+    HANDLE_PHONE_CHANGE,
     SWITCH_CURRENCY
     } from './action-types/cart-actions'
 import axios from 'axios';
@@ -107,6 +108,13 @@ export const handleAddressChange = (value) => {
 export const handleEmailChange = (value) => {
     return {
         type: HANDLE_EMAIL_CHANGE,
+        value
+    }
+}
+
+export const handlePhoneChange = (value) => {
+    return {
+        type: HANDLE_PHONE_CHANGE,
         value
     }
 }
