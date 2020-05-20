@@ -23,7 +23,7 @@ class Recipe extends Component {
     }
 
     handleClick = (e) => {
-        if (!this.props.error) {
+        if (this.props.error !== undefined && !this.props.error) {
             let data = {
                 products: this.props.addedItems,
                 ship_address: this.props.address,
