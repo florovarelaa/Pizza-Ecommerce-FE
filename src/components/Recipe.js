@@ -23,7 +23,8 @@ class Recipe extends Component {
     }
 
     handleClick = (e) => {
-        if (this.props.validAddress && this.props.validPhone && this.props.validEmail) {
+        console.log('this.props.error', this.props.error)
+        if (!this.props.error) {
             let data = {
                 products: this.props.addedItems,
                 ship_address: this.props.address,

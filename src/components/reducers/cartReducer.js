@@ -186,7 +186,7 @@ const cartReducer = (state = initState, action) => {
                 ...state,
                 address: action.value,
                 validAddress: validAddress,
-                error: validAddress && state.validPhone && state.validEmail && state.addedItems.length > 0
+                error: !(validAddress && state.validPhone && state.validEmail && state.addedItems.length > 0)
             }
         }
 
@@ -197,7 +197,7 @@ const cartReducer = (state = initState, action) => {
                     ...state,
                     phone: action.value,
                     validPhone: validPhone,
-                    error: validPhone && state.validAddress && state.validEmail && state.addedItems.length > 0
+                    error: !(validPhone && state.validAddress && state.validEmail && state.addedItems.length > 0)
                 }
         }
 
